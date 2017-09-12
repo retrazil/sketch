@@ -3,16 +3,7 @@ $(document).ready(function(){
   grid(10);
 
   // change opacity on hover
-  $('#container').on('mouseenter', '.block' , function(){
-    $(this).css('opacity', function(){
-      var opacity = parseFloat($(this).css('opacity'));
-
-      if(opacity >= 1)
-        return opacity
-      else
-        return opacity + 0.15; 
-    });  
-  });
+  $('#container').on('mouseenter', '.block' , darker);
     
   // clear grid
   $('#clear').click(function(){
@@ -100,4 +91,20 @@ function clear()
     $(this).css('opacity', 0);
   });
 
+}
+
+// make the element darker with each hover pass
+// event handler for hover
+// this binds to calling element
+function darker()
+{
+  $(this).css('opacity', function(){
+    var opacity = parseFloat($(this).css('opacity'));
+
+    if(opacity >= 1)
+      return opacity
+    else
+      return opacity + 0.15; 
+    
+  });
 }
