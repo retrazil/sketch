@@ -2,17 +2,15 @@ $(document).ready(function(){
   
   grid(10);
 
-  // VOLATILE
   // change opacity on hover
   $('#container').on('mouseenter', '.block' , function(){
-    // console.log('this in hover is', this);
     $(this).css('opacity', function(){
       var opacity = parseFloat($(this).css('opacity'));
 
       if(opacity >= 1)
         return opacity
       else
-        return opacity + 0.10; 
+        return opacity + 0.15; 
     });  
   });
     
@@ -24,7 +22,22 @@ $(document).ready(function(){
   // resize 
   $('#resize').click(function(){
     clear();
-    var blocksPerSide = parseInt(prompt("Input will be rendered as Input x Input size grid"));
+    var blocksPerSide = parseInt(prompt("Input will be rendered as Input x Input size grid. \n Max value is 100."));
+    
+    if(isNaN(blocksPerSide))
+    {
+      clear();
+      return; 
+    }    
+    else if(blocksPerSide > 100){
+      blocksPerSide = 100;
+      prompt("Entered input greater than 100. Rounding it to 100.");
+    }
+    else if (blocksPerSide <= 0)
+    {
+      blocksPerSide = 10;
+      prompt("Entered 0 or negative as input. Defaulting to 10.");
+    }
     console.log('blocks per side', blocksPerSide);
     grid(blocksPerSide);
   });

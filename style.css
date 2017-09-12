@@ -60,7 +60,7 @@
     height: 80px;
     width: 80px;
     background: slateGray;
-    xopacity: 0; 
+    opacity: 0; 
 }
 
 .block-hover {
