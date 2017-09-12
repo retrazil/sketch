@@ -35,7 +35,8 @@ $(document).ready(function(){
   });
 
   $('#random').click(function(){
-    $('.block')
+    $('#container').off('mouseenter', '.block', darker); // unbind darker first
+    
   });
 });
 
