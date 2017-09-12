@@ -24,6 +24,7 @@ $(document).ready(function(){
     clear();
     var blocksPerSide = parseInt(prompt("Input will be rendered as Input x Input size grid. \n Max value is 100."));
     
+    // defense / problem handling 
     if(isNaN(blocksPerSide))
     {
       clear();
@@ -40,6 +41,10 @@ $(document).ready(function(){
     }
     console.log('blocks per side', blocksPerSide);
     grid(blocksPerSide);
+  });
+
+  $('#random').click(function(){
+    $('.block')
   });
 });
 

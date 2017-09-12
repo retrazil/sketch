@@ -24,8 +24,7 @@
     margin-left: 60px;
 }
 
-#clear, #resize {
-    /*     float: left; */
+#clear, #resize, #random {
     padding: 20px 40px; 
     font-size: 30px;
     margin: auto;
@@ -36,7 +35,7 @@
     border-radius: 5px;
 }
 
-#clear:active, #resize:active {
+#clear:active, #resize:active, #random:active {
     color: white;
     box-shadow: inset 0 0 10px dimGrey;  
 }
