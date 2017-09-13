@@ -37,14 +37,9 @@ $(document).ready(function(){
   // random color
   $('#random').click(function(){
     $('#container').off('mouseenter', '.block', darker); // unbind darker first
-    $('.block').css('opacity', 1);
-    $('#container').on('mouseenter', '.block', function(){
-        var r = Math.floor(Math.random() * 256);
-        var g = Math.floor(Math.random() * 256);
-        var b = Math.floor(Math.random() * 256);
-        var rgb = 'rgb(' + r + ',' + g + ',' + b + ')'; 
-        $(this).css('background', rgb);
-    });
+    $('.block').css('opacity', 1); // make all blocks opaque
+    $('.block').css('background', 'white'); // make background color of all blocks white
+    $('#container').on('mouseenter', '.block', randomColor);
   });
 });
 
@@ -116,4 +111,14 @@ function darker()
       return opacity + 0.15; 
     
   });
+}
+
+// produce random colors 
+function randomColor()
+{
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
+    var rgb = 'rgb(' + r + ',' + g + ',' + b + ')'; 
+    $(this).css('background', rgb);
 }
