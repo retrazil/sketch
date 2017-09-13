@@ -24,7 +24,7 @@
     margin-left: 60px;
 }
 
-#clear, #resize, #random {
+#clear, #resize, #rainbow {
     padding: 20px 40px; 
     font-size: 30px;
     margin: auto;
@@ -35,7 +35,7 @@
     border-radius: 5px;
 }
 
-#clear:active, #resize:active, #random:active {
+#clear:active, #resize:active, #rainbow:active {
     color: white;
     box-shadow: inset 0 0 10px dimGrey;  
 }
@@ -50,7 +50,6 @@
 .row {
     height: 80px;
     width: 800px; 
-    /*     opacity: 0; */
 }
 
 .block {
