@@ -7,12 +7,16 @@ $(document).ready(function(){
     
     // clear grid
     $('#clear').click(function(){
+        $('#container').off(); // unbind all event handlers first 
+        $('#container').on('mouseenter', '.block' , darker); // add a new one
         clear();
     });
 
     // resize 
     $('#resize').click(function(){
         clear();
+        $('#container').off(); // unbind all event handlers first 
+        $('#container').on('mouseenter', '.block' , darker); // add a new one
         var blocksPerSide = parseInt(prompt("Input will be rendered as Input x Input size grid. \n Max value is 100."));
         
         // defense / problem handling 
@@ -36,10 +40,23 @@ $(document).ready(function(){
 
     // rainbow color
     $('#rainbow').click(function(){
-        $('#container').off('mouseenter', '.block', darker); // unbind darker first
+        $('#container').off(); // unbind all event handlers first
+        clear(); // clean the grid 
         $('.block').css('opacity', 1); // make all blocks opaque
-        $('.block').css('background', 'white'); // make background color of all blocks white
-        $('#container').on('mouseenter', '.block', rainbowColor);
+        $('.block').css('background', 'white'); // set background to white
+        $('#container').on('mouseenter', '.block', function(){ 
+            $(this).css('background', rainbowColor());});
+    });
+
+    // random color
+    $('#random').click(function(){  
+        $('#container').off(); // unbind all event handlers first 
+        clear();  
+        var randomColor = rainbowColor();
+        console.log('random color is', randomColor);
+        $(this).css('background', randomColor); // set button to random color
+        $('.block').css('background', randomColor); // set block to same colors
+        $('#container').on('mouseenter', '.block', darker);
     });
 });
 
@@ -90,11 +107,9 @@ function grid(blocksPerSide)
 // clear grid
 function clear()
 {
-    // 'this' binds to calling environment
-    $('.block').each(function(){
-        $(this).css('opacity', 0);
-    });
-
+    $('.block').css('opacity', 0);
+    $('.block').css('background', ''); // default to background in css stylesheet 
+    $('#random').css('background', ''); // default to original background 
 }
 
 // make the element darker with each hover pass
@@ -120,5 +135,5 @@ function rainbowColor()
     var g = Math.floor(Math.random() * 256);
     var b = Math.floor(Math.random() * 256);
     var rgb = 'rgb(' + r + ',' + g + ',' + b + ')'; 
-    $(this).css('background', rgb);
+    return rgb; 
 }
