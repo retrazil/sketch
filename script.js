@@ -34,9 +34,17 @@ $(document).ready(function(){
     grid(blocksPerSide);
   });
 
+  // random color
   $('#random').click(function(){
     $('#container').off('mouseenter', '.block', darker); // unbind darker first
-    
+    $('.block').css('opacity', 1);
+    $('#container').on('mouseenter', '.block', function(){
+        var r = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        var rgb = 'rgb(' + r + ',' + g + ',' + b + ')'; 
+        $(this).css('background', rgb);
+    });
   });
 });
 
